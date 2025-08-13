@@ -2,11 +2,11 @@
 
 This project performs **Exploratory Data Analysis (EDA)** on the Amazon Clothing Sales 2025 dataset, from **Initial Data Exploration & Cleaning** through **Visualization Expectations**.
 
-## 📌 Description
+## Description
 The notebook cleans, processes, and analyzes the dataset to identify trends, detect anomalies, and prepare data for potential further analysis.  
 No machine learning is used — the focus is on understanding the dataset and generating clear visual insights.
 
-## 🔍 Features
+## Features
 - Load and inspect raw data
 - Handle missing values and incorrect data types
 - Remove duplicates and check pricing integrity
@@ -30,12 +30,12 @@ No machine learning is used — the focus is on understanding the dataset and ge
   - Payment method insights
   - Correlation heatmap of numeric features
 
-## 📂 Files
+## Files
 - `Amazon_Clothing_Sales_2025_EDA.ipynb` — The main analysis notebook
 - `amazon_clothing_cleaned.csv` — Cleaned dataset
 - `requirements.txt` — Python dependencies to run the notebook
 
-## ▶️ How to Run
+## How to Run
 1. Clone this project or download all files.
 2. Install required Python packages:
    ```bash
@@ -44,7 +44,7 @@ No machine learning is used — the focus is on understanding the dataset and ge
 3. Open `Amazon_Clothing_Sales_2025_EDA.ipynb` in Jupyter Notebook or Jupyter Lab.
 4. Execute all cells in order.
 
-## 📊 Visualization Expectations
+## Visualization Expectations
 The notebook provides clear, labeled visualizations to answer key business questions, such as:
 - How do revenues change over time?
 - Which categories and brands are most profitable?
