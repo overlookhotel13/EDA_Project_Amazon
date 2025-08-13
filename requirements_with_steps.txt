@@ -1,0 +1,72 @@
+# Requirements & Steps to Reproduce Amazon Clothing Sales 2025 EDA
+
+## 1. Install Dependencies
+Use the following command to install all necessary Python packages:
+```
+pip install pandas numpy matplotlib seaborn fuzzywuzzy python-Levenshtein
+```
+
+### Dependencies:
+- pandas — data manipulation
+- numpy — numerical operations
+- matplotlib — visualizations
+- seaborn — imported for possible style use (plots are Matplotlib)
+- fuzzywuzzy — fuzzy string matching to merge similar category/brand names
+- python-Levenshtein — optional but speeds up fuzzywuzzy
+
+---
+
+## 2. Steps to Reproduce End Results
+
+### Step 1 — Load Data
+- Read the dataset CSV into a pandas DataFrame.
+- Check initial shape, column names, and data types.
+
+### Step 2 — Handle Data Types & Dates
+- Convert `order_date` to datetime format.
+- Ensure numeric columns like `price`, `quantity`, `discount_percent`, `final_price`, etc., are numeric.
+
+### Step 3 — Handle Missing Values
+- Identify missing values and calculate percentage per column.
+- Impute reasonable defaults (e.g., quantity=1, discount_percent=0) or leave as NaN where analysis is unaffected.
+
+### Step 4 — Remove Duplicates
+- Drop exact duplicate rows.
+- Drop duplicates based on (`order_id`, `product_id`) if applicable.
+
+### Step 5 — Handle Inconsistencies
+- Use `fuzzywuzzy` to merge similar category names (`'men'` and `'Men'` → `Men`).
+- Standardize text case and remove extra spaces.
+
+### Step 6 — Price Integrity Check
+- Compare `final_price` with calculated price: `price * quantity * (1 - discount_percent/100)`.
+- Flag rows with large mismatches.
+
+### Step 7 — Outlier Detection & Treatment
+- Use the IQR method to detect numeric outliers.
+- Clip extreme values to lower/upper IQR bounds for cleaner plots.
+
+### Step 8 — Feature Engineering
+- Extract `order_year`, `order_month`, `order_weekday` from `order_date`.
+- Create `discount_amount`, `unit_price`, `delivery_speed`.
+- Aggregate customer-level metrics: total spend, total orders, average rating, return rate.
+
+### Step 9 — Save Cleaned Data
+- Export cleaned DataFrame to `amazon_clothing_cleaned.csv` for reuse.
+
+### Step 10 — Visualization
+- Use Matplotlib to plot:
+  - Distributions (histograms) for numeric columns.
+  - Counts (bar charts) for top categories/brands.
+  - Monthly revenue trends.
+  - Price vs quantity scatter with trend line.
+  - Discount effectiveness.
+  - Return rates by category/brand/age group.
+  - AOV by region and age group.
+  - Delivery days vs review ratings.
+  - Average ratings by brand/category/region.
+  - Correlation heatmap for numeric features.
+
+---
+
+Following the above steps exactly will allow you to reproduce the cleaned dataset and visual insights from the original notebook.
